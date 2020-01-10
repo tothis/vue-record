@@ -1,27 +1,26 @@
 <template>
     <div>
         <div v-for="(imgUrl, index) in imgList" :key="index">
-            <img :src='imgUrl' preview="1">
+            <img :src='imgUrl'>
             <div @click="deleteImg(index)">
                 <img>
             </div>
         </div>
         <div class="add-pic" v-if="imgList.length < 6">
-            <img>
+            <img id="show">
             <p>{{picNum}}/6</p>
-            <input type="file" accept="image/*" multiple="multiple" name="cover" @change="uploadPic($event)">
+            <input type="file" accept="image/*" multiple="multiple"
+                   name="cover" @change="uploadPic($event)">
         </div>
     </div>
 </template>
 
 <script>
     import EXIF from 'exif-js'
+    import axios from 'axios'
 
     export default {
         name: 'file-upload',
-        props: {
-            imgUrls: Array
-        },
         data () {
             return {
                 // 图片
@@ -29,11 +28,9 @@
                 imgObj: {
                     size: 500
                 },
+                imgUrls: Array,
                 imgList: []
             }
-        },
-        mounted () {
-            this.imgList = this.imgUrls
         },
         methods: {
             // 上传图片
@@ -47,9 +44,9 @@
                 }
                 // 获取当前选中的文件
                 let file = e.target.files[0]
-                // console.log('初始file:', file);
+                console.log('file -> ', file)
                 this.imgObj.imgType = file.type
-                // 图片压缩之旅
+                // 图片压缩
                 this.transformFileToDataUrl(file)
             },
             transformFileToDataUrl (file) { // 将file转成dataUrl Base64格式
@@ -65,17 +62,16 @@
                     let dataUrl = e.target.result
                     console.log('dataUrl的type:', typeof dataUrl)
 
-                    // 展示图片-压缩前
-                    // document.querySelector('#show-pic').src = dataUrl
+                    // 展示图片 压缩前
+                    document.querySelector('#show').src = dataUrl
 
-                    console.log('Base64大小:', dataUrl.length)
+                    console.log('base64大小', dataUrl.length)
 
                     // 图片不压缩
                     if (dataUrl.length < imgCompassMaxSize) {
                         _this.rotateAndCompress(dataUrl, false)
-
-                        // 图片压缩
                     } else {
+                        // 图片压缩
                         _this.rotateAndCompress(dataUrl, true)
                     }
                 }
@@ -88,12 +84,12 @@
                 } else {
                     this.imgObj.ratio = 1
                 }
-                console.log('压缩比ratio:', this.imgObj.ratio)
+                console.log('压缩比ratio', this.imgObj.ratio)
 
                 let img = new Image()
-                // console.log('img:', img)
+                // console.log('img', img)
 
-                console.log('beforeCompress大小:', dataUrl.length)
+                console.log('beforeCompress大小', dataUrl.length)
 
                 img.onload = function () {
                     // 方向
@@ -110,13 +106,13 @@
                     canvas.width = img.width // 没压缩宽高
                     canvas.height = img.height
 
-                    console.log('w:', img.width)
-                    console.log('h:', img.height)
+                    console.log('w', img.width)
+                    console.log('h', img.height)
 
                     // 画笔
                     let ctx = canvas.getContext('2d')
 
-                    // 执行Canvas的drawImage语句
+                    // 执行canvas的drawImage语句
                     // ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
                     // 画图 判断图片拍摄方向的 - 旋转角度
                     if (orient === 1 || orient === 0 || orient === undefined) {
@@ -156,14 +152,13 @@
                             // 执行Canvas的drawImage语句
                             ctx.drawImage(img, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width)
                         }
-
                         // 恢复状态
                         ctx.restore()
                     }
 
                     // 压缩图片
                     // let compressedDataUrl = canvas.toDataURL('image/jpeg', imgObj.ratio)
-                    console.log('imgObj:', _this.imgObj)
+                    console.log('imgObj', _this.imgObj)
                     let compressedDataUrl = canvas.toDataURL(_this.imgObj.imgType, _this.imgObj.ratio)
 
                     console.log('afterCompress大小', compressedDataUrl.length)
@@ -189,32 +184,32 @@
                 return new Blob([u8arr], {type: mime})
             },
             uploadImg (data) {
-                console.log('data上传前 ', data.length)
+                console.log('data上传前', data.length)
 
                 let blob = this.convertBase64UrlToBlob(data)
                 let formData = new FormData()
                 formData.append('file', blob, 'file_' + Date.parse(new Date()) + '.jpg')
-                formData.append('userId', 0)
-                formData.append('fileType', 0)
-                formData.append('flag', '')
-
-                let config = {
-                    transformRequest: data => data,
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    // timeout: 10000
-                } // 添加请求头
-
-                this.$axios.post('http://localhost:8080/file-upload/image', formData, config)
-                    .then(res => {
-                        // console.log(res)
-                        // 上传成功
-                        if (res.status === 200) {
-                            this.imgList = [res.data.data.fileUrl, ...this.imgList]
-                            this.picNum++
-                            // console.log(this.imgUrls)
-                            this.$emit('uploadImg', this.imgList)
-                        }
-                    })
+                axios({
+                    method: 'post',
+                    url: '/file/image',
+                    data: formData,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then(
+                    result => {
+                        let urlPre = 'http://localhost:8080/file/'
+                        console.log('上传成功' + JSON.stringify(result.data))
+                        this.imgList = [urlPre + result.data.fileAddress, ...this.imgList]
+                        this.picNum++
+                        console.log(this.imgUrls)
+                        this.$emit('uploadImg', this.imgList)
+                    }
+                ).catch(
+                    error => {
+                        console.log('上传失败' + error)
+                    }
+                )
             },
             deleteImg (n) { // 删除图片
                 this.picNum--

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    import request from '../util/request'
+    import axios from 'axios'
 
     export default {
         name: 'header',
@@ -43,9 +43,10 @@
         },
         // 当data和methods初始化完毕后 会自动执行created生命周期函数
         created () {
-            request.get('/permission/list').then((result) => {
-                this.list = result.data.data.list
-            }).catch(err => {
+            axios.get('/permission/list')
+                .then((result) => {
+                    this.list = result.data.data.list
+                }).catch(err => {
                 console.log(err)
             })
         },
