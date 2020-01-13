@@ -34,6 +34,16 @@ const routes = [
     path: "/data-table",
     name: "data-table",
     component: () => import("@/views/data-table.vue")
+  },
+  {
+    path: "/better-scroll-x",
+    name: "better-scroll-x",
+    component: () => import("@/views/better-scroll-x.vue")
+  },
+  {
+    path: "/better-scroll-y",
+    name: "better-scroll-y",
+    component: () => import("@/views/better-scroll-y.vue")
   }
 ];
 

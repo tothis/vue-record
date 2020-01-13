@@ -11,7 +11,11 @@
       |
       <router-link to="/file-upload">file-upload</router-link>
       |
-      <router-link to="/data-table">table</router-link>
+      <router-link to="/data-table">element-table</router-link>
+      |
+      <router-link to="/better-scroll-x">better-scroll-x</router-link>
+      |
+      <router-link to="/better-scroll-y">better-scroll-y</router-link>
     </div>
     <router-view></router-view>
   </div>
