@@ -44,6 +44,11 @@ const routes = [
     path: "/better-scroll-y",
     name: "better-scroll-y",
     component: () => import("@/views/better-scroll-y.vue")
+  },
+  {
+    path: "/chart-table",
+    name: "chart-table",
+    component: () => import("@/views/chart-table.vue")
   }
 ];
 

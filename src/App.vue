@@ -16,6 +16,8 @@
       <router-link to="/better-scroll-x">better-scroll-x</router-link>
       |
       <router-link to="/better-scroll-y">better-scroll-y</router-link>
+      |
+      <router-link to="/chart-table">echarts</router-link>
     </div>
     <router-view></router-view>
   </div>
