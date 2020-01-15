@@ -7,7 +7,7 @@
       <li @click="scrollToEl('c-4')">item 4</li>
     </ul>
     <div class="content" ref="scroll">
-      <div class="scroll">
+      <div class="scroll" ref="nav">
         <!-- 必须包含两层div -->
         <div class="c-1">content 1</div>
         <div class="c-2">content 2</div>
@@ -43,9 +43,14 @@ export default {
   created() {
     // 渲染dom后初始化滚动
     this.$nextTick(() => {
-      // 获取当前屏幕宽度 没有超出宽度不会滚动
-      let width = this.$refs.scroll.clientWidth;
-      this.$refs.scroll.style.width = width + "px";
+      let nav = this.$refs.nav;
+      let tags = nav.children;
+      let width = 0;
+      // 获取所有子元素宽度
+      for (let i = 0; i < tags.length; i++) {
+        width += tags[i].offsetWidth;
+      }
+      nav.style.width = width + "px";
       // 初始化滚动
       this.scroll = new BScroll(this.$refs.scroll, {
         startX: 0,

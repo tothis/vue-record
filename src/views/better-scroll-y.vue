@@ -73,10 +73,10 @@ export default {
 
 .content {
   width: 600px;
-  height: 600px;
+  height: 400px;
+  background-color: #999;
   white-space: nowrap;
   overflow: hidden;
-  background-color: #999;
 }
 
 .scroll > div {

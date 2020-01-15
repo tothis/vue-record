@@ -1,18 +1,20 @@
 <template>
-  <div id="app" ref="wrap">
-    <div id="nav" ref="nav">
-      <router-link to="/">home</router-link>
-      <router-link to="/about">about</router-link>
-      <router-link to="/header">header</router-link>
-      <router-link to="/user">user</router-link>
-      <router-link to="/file-upload">file-upload</router-link>
-      <router-link to="/data-table">element-table</router-link>
-      <router-link to="/better-scroll-x">better-scroll-x</router-link>
-      <router-link to="/better-scroll-y">better-scroll-y</router-link>
-      <router-link to="/chart-table">echarts</router-link>
-      <router-link to="/vant-calendar">vant-calendar</router-link>
-      <router-link to="/vant-date">vant-date</router-link>
-      <router-link to="/ele-date">ele-date</router-link>
+  <div id="app">
+    <div ref="wrap">
+      <div id="nav" ref="nav">
+        <router-link to="/">home</router-link>
+        <router-link to="/about">about</router-link>
+        <router-link to="/header">header</router-link>
+        <router-link to="/user">user</router-link>
+        <router-link to="/file-upload">file-upload</router-link>
+        <router-link to="/data-table">element-table</router-link>
+        <router-link to="/better-scroll-x">better-scroll-x</router-link>
+        <router-link to="/better-scroll-y">better-scroll-y</router-link>
+        <router-link to="/chart-table">echarts</router-link>
+        <router-link to="/vant-calendar">vant-calendar</router-link>
+        <router-link to="/vant-date">vant-date</router-link>
+        <router-link to="/ele-date">ele-date</router-link>
+      </div>
     </div>
     <router-view></router-view>
   </div>
@@ -75,6 +77,7 @@ export default {
     display inline-block
     border-radius 2px
     background-color seagreen
+    padding: 2px 6px;
 
 #nav > a + a
     margin-left 4px
