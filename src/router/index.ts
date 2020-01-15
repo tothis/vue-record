@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "@/views/Home.vue";
+import home from "@/views/home.vue";
 
 Vue.use(VueRouter);
 
@@ -8,12 +8,12 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: Home
+    component: home
   },
   {
     path: "/about",
     name: "about",
-    component: () => import("@/views/About.vue")
+    component: () => import("@/views/about.vue")
   },
   {
     path: "/header",
@@ -49,6 +49,21 @@ const routes = [
     path: "/chart-table",
     name: "chart-table",
     component: () => import("@/views/chart-table.vue")
+  },
+  {
+    path: "/vant-calendar",
+    name: "vant-calendar",
+    component: () => import("@/views/vant-calendar.vue")
+  },
+  {
+    path: "/vant-date",
+    name: "vant-date",
+    component: () => import("@/views/vant-date.vue")
+  },
+  {
+    path: "/ele-date",
+    name: "ele-date",
+    component: () => import("@/views/ele-date.vue")
   }
 ];
 

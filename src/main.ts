@@ -1,18 +1,20 @@
 import Vue from "vue";
-import App from "./App.vue";
+import app from "./app.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 
-import elementUI from "element-ui";
+import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
+import { DatetimePicker } from "vant";
 
 Vue.config.productionTip = false;
 
-Vue.use(elementUI);
+Vue.use(ElementUI);
+Vue.use(DatetimePicker);
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(app)
 }).$mount("#app");
