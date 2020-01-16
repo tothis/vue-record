@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div ref="wrap">
+    <div class="wrap" ref="wrap">
       <div id="nav" ref="nav">
         <router-link to="/">home</router-link>
         <router-link to="/about">about</router-link>
@@ -36,7 +36,8 @@ export default {
       let width = 0;
       // 获取所有子元素宽度
       for (let i = 0; i < tags.length; i++) {
-        width += tags[i].offsetWidth;
+        // 4为margin-left和padding的弥补值
+        width += tags[i].offsetWidth + 6;
       }
       nav.style.width = width + "px";
       // this.$nextTick 是一个异步函数 为了确保dom已经渲染
@@ -60,17 +61,23 @@ export default {
 </script>
 
 <style lang="stylus">
+
+html, body, #app
+    height 100%
+
 #app
     font-family 'Avenir', Helvetica, Arial, sans-serif
     -webkit-font-smoothing antialiased
     -moz-osx-font-smoothing grayscale
     text-align center
     color #2c3e50
-    overflow: hidden;
-    white-space: nowrap;
 
 #nav
     margin: 2% auto;
+
+.wrap
+    overflow: hidden;
+    white-space: nowrap;
 
 #nav > a
     color white
