@@ -36,7 +36,7 @@ export default {
       let width = 0;
       // 获取所有子元素宽度
       for (let i = 0; i < tags.length; i++) {
-        // 4为margin-left和padding的弥补值
+        // 6为margin-left和padding的弥补值
         width += tags[i].offsetWidth + 6;
       }
       nav.style.width = width + "px";
