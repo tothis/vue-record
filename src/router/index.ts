@@ -46,6 +46,11 @@ const routes = [
     component: () => import("@/views/better-scroll-y.vue")
   },
   {
+    path: "/remember-scroll",
+    name: "remember-scroll",
+    component: () => import("@/views/remember-scroll.vue")
+  },
+  {
     path: "/chart-table",
     name: "chart-table",
     component: () => import("@/views/chart-table.vue")
