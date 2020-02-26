@@ -1,19 +1,19 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
+    <div class="hello">
+        <h1>{{ msg }}</h1>
+    </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+    @Prop() private msg!: string
 }
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus" scoped>
 h3
     margin 40px 0 0
 
