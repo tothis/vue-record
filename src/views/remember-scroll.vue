@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import RememberScroll from '@/util/remember-scroll'
+    import RememberScroll from '@/util/remember-scroll'
 
-export default {
-    name: 'remember-scroll',
-    created() {
-        new RememberScroll()
+    export default {
+        name: 'remember-scroll',
+        created() {
+            new RememberScroll()
+        }
     }
-}
 </script>

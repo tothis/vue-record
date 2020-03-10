@@ -25,15 +25,15 @@
             <el-table-column label="操作">
                 <template slot-scope="scope">
                     <el-button
-                        @click="handleEdit(scope.$index, scope.row)"
-                        size="mini"
-                        >编辑
+                            @click="handleEdit(scope.$index, scope.row)"
+                            size="mini"
+                    >编辑
                     </el-button>
                     <el-button
-                        @click="handleDelete(scope.$index, scope.row)"
-                        size="mini"
-                        type="danger"
-                        >删除
+                            @click="handleDelete(scope.$index, scope.row)"
+                            size="mini"
+                            type="danger"
+                    >删除
                     </el-button>
                 </template>
             </el-table-column>
@@ -42,45 +42,45 @@
 </template>
 
 <script>
-export default {
-    name: 'data-table',
-    data() {
-        return {
-            tableData: [
-                {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                },
-                {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                },
-                {
+    export default {
+        name: 'data-table',
+        data() {
+            return {
+                tableData: [
+                    {
+                        date: '2016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    },
+                    {
+                        date: '2016-05-04',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1517 弄'
+                    },
+                    {
+                        date: '2016-05-01',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1519 弄'
+                    }
+                ]
+            }
+        },
+        methods: {
+            dataAdd() {
+                this.tableData.push({
                     date: '2016-05-01',
                     name: '王小虎',
                     address: '上海市普陀区金沙江路 1519 弄'
-                }
-            ]
-        }
-    },
-    methods: {
-        dataAdd() {
-            this.tableData.push({
-                date: '2016-05-01',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
-            })
-        },
-        handleEdit(index, row) {
-            console.log(index, row)
-        },
-        handleDelete(index, row) {
-            console.log(index, row)
+                })
+            },
+            handleEdit(index, row) {
+                console.log(index, row)
+            },
+            handleDelete(index, row) {
+                console.log(index, row)
+            }
         }
     }
-}
 </script>
 
 <style scoped></style>
