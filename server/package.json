@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "koa服务",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "李磊",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.8"
+  }
+}

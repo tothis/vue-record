@@ -6,11 +6,13 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/',
+        // '/'和''都可映射为主路由
+        path: '',
         name: 'home',
         component: home
     },
     {
+        // 必须以'/'开始
         path: '/about',
         name: 'about',
         component: () => import('@/views/about')
@@ -69,6 +71,11 @@ const routes = [
         path: '/ele-date',
         name: 'ele-date',
         component: () => import('@/views/ele-date')
+    },
+    {
+        path: '/pdfjs',
+        name: 'pdfjs',
+        component: () => import('@/views/pdfjs')
     }
 ]
 

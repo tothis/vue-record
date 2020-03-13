@@ -16,5 +16,5 @@
 </script>
 <style lang="stylus" scoped>
     img
-        border-radius: .8%;
+        border-radius 4%
 </style>

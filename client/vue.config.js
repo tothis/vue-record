@@ -9,6 +9,7 @@ module.exports = {
         // https: false, // 是否使用https协议
         // hotOnly: false, // 是否开启热更新
         proxy: {
+            // 必须以'/'开始
             '/api': {
                 target: 'http://localhost:8080', // API服务器的地址
                 ws: true, // 代理websockets
@@ -17,15 +18,14 @@ module.exports = {
                 changeOrigin: true,
                 pathRewrite: {
                     // 重写路径 比如'/api/aaa/bbb'重写为'/aaa/bbb'
-                    '^/api': ''
+                    'api': ''
                 }
             },
-            '/file/': {
-                target: 'http://localhost:8080', // API服务器的地址
+            '/file': {
+                target: 'http://localhost:8080',
                 changeOrigin: true,
                 pathRewrite: {
-                    // 重写路径 比如'/api/aaa/bbb'重写为'/aaa/bbb'
-                    '^/file/': '/file-upload/'
+                    'file': 'file-upload'
                 }
             }
         }

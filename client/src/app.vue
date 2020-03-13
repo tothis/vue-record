@@ -15,6 +15,7 @@
                 <router-link to="vant-calendar">vant-calendar</router-link>
                 <router-link to="vant-date">vant-date</router-link>
                 <router-link to="ele-date">ele-date</router-link>
+                <router-link to="pdfjs">pdfjs</router-link>
             </div>
         </div>
         <router-view/>
