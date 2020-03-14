@@ -5,15 +5,14 @@
             <el-button @click="onDownload" size="mini" type="primary">
                 下载
             </el-button>
-            <!-- <el-button type="primary" size="mini" @click="onPrint"> -->
-            <!-- 打印-->
-            <!-- </el-button> -->
+            <el-button @click="onPrint" size="mini" type="primary">
+                打印
+            </el-button>
         </div>
         <!-- 打印使用 -->
-        <!-- <iframe name="printContainer" class="print"></iframe> -->
+        <iframe class="print" name="printContainer"></iframe>
     </div>
 </template>
-
 <script>
     import { Loading, Message } from 'element-ui'
     import { pdf as pdfApi } from '@/service/api'
@@ -31,12 +30,12 @@
             }
         }, computed: { // computed监控自定义变量 该变量不在data中声明 直接在computed中定义
             // 打印使用
-            // printWindow() {
-            //     return window.frames['printContainer']
-            // },
-            // printBody() {
-            //     return this.printWindow.document.body
-            // }
+            printWindow() {
+                return window.frames['printContainer']
+            },
+            printBody() {
+                return this.printWindow.document.body
+            }
         },
         mounted() {
             // 加载pdf文件
@@ -107,19 +106,37 @@
             // 创建canvas容器 并将1页pdf渲染上去
             appendPage(pageIndex) {
                 return this.pdfContent.getPage(pageIndex).then(page => {
-                    const viewport = page.getViewport(this.pdfScale)
-                    // 在页面中创建canvas
-                    const canvas = document.createElement('canvas')
-                    canvas.id = 'canvas_' + pageIndex
-                    document.getElementById('canvas-wrap').append(canvas)
-                    const context = canvas.getContext('2d')
-                    canvas.height = viewport.height
-                    canvas.width = viewport.width
-                    const renderContext = {
-                        canvasContext: context,
-                        viewport: viewport
-                    }
-                    return page.render(renderContext)
+
+                    /* canvas实现方式 */
+                    // const viewport = page.getViewport(this.pdfScale)
+                    // // 在页面中创建canvas
+                    // const canvas = document.createElement('canvas')
+                    // canvas.id = 'canvas_' + pageIndex
+                    // document.getElementById('canvas-wrap').append(canvas)
+                    // const context = canvas.getContext('2d')
+                    // canvas.height = viewport.height
+                    // canvas.width = viewport.width
+                    // const renderContext = {
+                    //     canvasContext: context,
+                    //     viewport: viewport
+                    // }
+                    // return page.render(renderContext)
+
+                    /* svg实现方式 */
+                    let viewport = page.getViewport(this.pdfScale)
+                    let container = document.createElement('div')
+                    container.id = 'canvas_' + pageIndex
+                    container.className = 'pageContainer'
+                    container.style.width = viewport.width + 'px'
+                    container.style.height = viewport.height + 'px'
+                    document.getElementById('canvas-wrap').appendChild(container)
+
+                    return page.getOperatorList().then(function(opList) {
+                        let svgGfx = new PDFJS.SVGGraphics(page.commonObjs, page.objs)
+                        return svgGfx.getSVG(opList, viewport).then(function(svg) {
+                            container.appendChild(svg)
+                        })
+                    })
                 })
             },
             // 下载
@@ -128,11 +145,11 @@
                     const blob = new Blob([data], { type: 'application/pdf' })
                     fileDownload(blob, `${this.pdfName}.pdf`)
                 })
-            }
+            },
             // 打印
-            // onPrint() {
-            //     this.printWindow.print()
-            // }
+            onPrint() {
+                this.printWindow.print()
+            }
         }
     }
 </script>
