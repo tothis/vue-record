@@ -1,0 +1,16 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "electron使用记录",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . app --out build"
+  },
+  "author": "李磊",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^8.1.1",
+    "electron-packager": "^14.2.1"
+  }
+}

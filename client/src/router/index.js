@@ -80,7 +80,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history', // 打包后需配合nginx方可使用
+    mode: 'hash',
     base: process.env.BASE_URL,
     routes
 })
