@@ -1,8 +1,9 @@
+使用electron-packager打包时 会自动下载预编译文件
+如果使用淘宝镜像出现404错误 可通过如下命令解决
 ```
-# 全局安装electron
-npm install -g electron
-# 全局安装打包工具
-npm install -g electron-packager
+# 不存在 https://npm.taobao.org/mirrors/electron/v8.1.1/electron-v8.1.1-win32-x64.zip
+# 存在 https://npm.taobao.org/mirrors/electron/8.1.1/electron-v8.1.1-win32-x64.zip
+npm config set electron_custom_dir 8.1.1
 ```
 >electron\node_modules\electron-packager\docs\api.md
 `linux` `win32` `darwin` `mas` `all`
