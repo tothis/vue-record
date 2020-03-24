@@ -1,6 +1,11 @@
 .idea
+# common
 **/build
 **/node_modules
-**/native/target
-**/native/index.node
-**/native/artifacts.json
+# weex
+weex/.temp
+weex/dist
+# neon
+electron/rust/native/target
+electron/rust/native/index.node
+electron/rust/native/artifacts.json
