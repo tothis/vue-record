@@ -12,3 +12,9 @@ win32 windows
 darwin mac-os
 mas mac-app-store
 all 打包所有
+>引入本地npm项目 在当前目录时如下三种都生效
+```
+"test": "./test"
+"test": "file:test"
+"test": "file:./test"
+```

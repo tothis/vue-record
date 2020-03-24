@@ -12,6 +12,7 @@
   "devDependencies": {
     "electron": "^8.1.1",
     "electron-packager": "^14.2.1",
-    "rust-core": "file:./rust"
+    "rust-core": "./rust",
+    "test": "./test"
   }
 }
