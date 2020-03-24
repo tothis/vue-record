@@ -1,0 +1,15 @@
+{
+  "name": "rust-core",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "author": "lilei <tothis@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.4.0"
+  },
+  "scripts": {
+    "install": "neon build --release"
+  },
+  "__npminstall_done": false
+}

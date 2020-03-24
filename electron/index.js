@@ -5,15 +5,22 @@ let win
 
 function createWindow() {
     // 创建浏览器窗口
-    win = new BrowserWindow({ width: 800, height: 600 })
+    win = new BrowserWindow({
+        width: 800
+        , height: 600
+        // 在html中可使用require函数
+        , webPreferences: {
+            nodeIntegration: true
+        }
+    })
 
     // 加载应用index.html
-    // win.loadFile('index.html')
+    win.loadFile('index.html')
     // 加载vue打包后文件
-    win.loadFile('../client/build/index.html')
+    // win.loadFile('../client/build/index.html')
 
     // 打开开发者工具
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
     // 当window被关闭 触发此事件
     win.on('closed', () => {
