@@ -1,0 +1,16 @@
+{
+  "name": "ssr",
+  "version": "1.0.0",
+  "description": "ssr使用记录",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "李磊",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11"
+  }
+}
