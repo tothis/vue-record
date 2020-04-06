@@ -3,7 +3,7 @@ const server = require('express')()
 const vueServerRenderer = require('vue-server-renderer')
 const renderer = vueServerRenderer.createRenderer()
 const pageRenderer = vueServerRenderer.createRenderer({
-    template: require('fs').readFileSync('template/index.html', 'utf-8')
+    template: require('fs').readFileSync('template/index.html', 'utf8')
 })
 
 server.get('*', (req, res) => {

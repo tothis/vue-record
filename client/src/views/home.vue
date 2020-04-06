@@ -2,6 +2,7 @@
     <div class="home">
         <img alt="Vue logo" src="@/assets/cool.gif"/>
         <item msg="learn vue"/>
+        {{ message }}
     </div>
 </template>
 <script>
@@ -11,6 +12,11 @@
         name: 'home',
         components: {
             item
+        },
+        data() {
+            return {
+                message: process.env
+            }
         }
     }
 </script>
