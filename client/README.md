@@ -1,7 +1,5 @@
 # vue-record
 
-### 命令
-
 #### 多环境配置文件`.env`
 `.env`定义变量时 前缀为`VUE_APP_` 否则会被忽略
 `--mode prod`指定使用`.env.prod`配置 但NODE_ENV默认为`development` `production` `test`
