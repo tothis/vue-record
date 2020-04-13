@@ -2,21 +2,20 @@ import axios from 'axios/index'
 import qs from 'qs'
 import storage from '@/util/storage'
 
-const ENV_BASEURL_MAP = {
-    development: '',
-    production: ''
+const BASE_URL = {
+    dev: '',
+    prod: ''
 }
 
-axios.defaults.baseURL = ENV_BASEURL_MAP[process.env.NODE_ENV] // 根据构建环境配置请求基础url
+axios.defaults.baseURL = BASE_URL[process.env.NODE_ENV] // 根据构建环境配置请求基础url
 axios.defaults.timeout = 2500 // 配置默认超时时间
 
-axios.defaults.headers.post['content-type'] = 'application/x-www-form-urlencoded;charset=utf-8'
+axios.defaults.headers.post['content-type'] = 'application/json'
 
 // 请求拦截
 axios.interceptors.request.use(
     config => {
         const AUTH_TOKEN = storage.get('auth_token')
-        console.log(666)
         AUTH_TOKEN && (config.headers.Authorization = AUTH_TOKEN)
         return config
     },
@@ -35,7 +34,6 @@ axios.interceptors.response.use(
         }
     },
     error => {
-        console.log(error, 9991)
         if (error.response.status) {
             // 通信层定义响应错误的行为
         }
@@ -51,7 +49,6 @@ export function get(url, params) {
                 params
             })
             .then(res => {
-                console.log(res, 222)
                 resolve(res.data)
             })
             .catch(error => {

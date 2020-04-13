@@ -23,6 +23,7 @@
 </template>
 <script>
     import BScroll from 'better-scroll'
+    // import { urlDownload } from '@/util/file-util'
 
     export default {
         data() {
@@ -31,6 +32,10 @@
             }
         },
         created() {
+            let imgPath = require('@/assets/cool.gif')
+            console.log(imgPath)
+            // urlDownload(imgPath, 'cool.gif')
+
             this.$nextTick(() => {
                 const nav = this.$refs.nav
                 const tags = nav.children
