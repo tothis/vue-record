@@ -76,10 +76,16 @@ const routes = [
         path: '/pdfjs',
         name: 'pdfjs',
         component: () => import('@/views/pdfjs')
+    },
+    {
+        path: '/file',
+        name: 'file',
+        component: () => import('@/views/file')
     }
 ]
 
 const router = new VueRouter({
+    // https://router.vuejs.org/zh/guide/essentials/history-mode.html
     // mode: 'history', // 打包后需配合nginx方可使用
     mode: 'hash',
     base: process.env.BASE_URL,
