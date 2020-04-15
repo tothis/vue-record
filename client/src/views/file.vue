@@ -30,7 +30,7 @@
                 data.append('file', file.files[0])
                 let xhr = new XMLHttpRequest()
                 // ajax每次发送一段数据 会生成一个progress事件
-                xhr.upload.addEventListener('progress', function(e) {
+                xhr.upload.addEventListener('progress', e => {
                     that.uploadProgress = Math.round((e.loaded * 100) / e.total)
                 })
                 xhr.open('post', 'http://localhost:8080/file/image')
@@ -49,8 +49,9 @@
                 let xhr = new XMLHttpRequest()
                 xhr.open('get', 'http://localhost:8080/file/download?fileName=' + this.fileName)
                 // 设置请求数据类型 否则文件下载后无法打开
+                // https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/responseType
                 xhr.responseType = 'blob'
-                xhr.addEventListener('progress', function(e) {
+                xhr.addEventListener('progress', e => {
                     // 响应头必须有content-length
                     if (e.lengthComputable) {
                         that.downloadProgress = Math.round((e.loaded * 100) / e.total)
@@ -61,7 +62,7 @@
                     if (xhr.readyState === 4) {
                         // let fileName = xhr.getResponseHeader('content-disposition')
                         let link = document.createElement('a')
-                        link.href = window.URL.createObjectURL(new Blob([xhr.response]))
+                        link.href = window.URL.createObjectURL(xhr.response)
                         link.download = '文件.jpg'
                         link.click()
                         // 释放通过URL.createObjectURL()创建的对象URL
