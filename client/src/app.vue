@@ -3,20 +3,20 @@
         <div class="wrap" ref="wrap">
             <div id="nav" ref="nav">
                 <router-link to="/">home</router-link>
-                <router-link to="about">about</router-link>
-                <router-link to="header">header</router-link>
-                <router-link to="user">user</router-link>
-                <router-link to="file-upload">file-upload</router-link>
-                <router-link to="data-table">element-table</router-link>
-                <router-link to="better-scroll-x">better-scroll-x</router-link>
-                <router-link to="better-scroll-y">better-scroll-y</router-link>
-                <router-link to="remember-scroll">remember-scroll</router-link>
-                <router-link to="chart-table">echarts</router-link>
-                <router-link to="vant-calendar">vant-calendar</router-link>
-                <router-link to="vant-date">vant-date</router-link>
-                <router-link to="ele-date">ele-date</router-link>
-                <router-link to="pdfjs">pdfjs</router-link>
-                <router-link to="file">file</router-link>
+                <router-link to="/about">about</router-link>
+                <router-link to="/header">header</router-link>
+                <router-link to="/user">user</router-link>
+                <router-link to="/file-upload">file-upload</router-link>
+                <router-link to="/data-table">element-table</router-link>
+                <router-link to="/better-scroll-x">better-scroll-x</router-link>
+                <router-link to="/better-scroll-y">better-scroll-y</router-link>
+                <router-link to="/remember-scroll">remember-scroll</router-link>
+                <router-link to="/chart-table">echarts</router-link>
+                <router-link to="/vant-calendar">vant-calendar</router-link>
+                <router-link to="/vant-date">vant-date</router-link>
+                <router-link to="/ele-date">ele-date</router-link>
+                <router-link to="/pdfjs">pdfjs</router-link>
+                <router-link to="/file">file</router-link>
             </div>
         </div>
         <router-view/>

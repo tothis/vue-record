@@ -28,11 +28,6 @@ const routes = [
         component: () => import('@/components/user')
     },
     {
-        path: '/file-upload',
-        name: 'file-upload',
-        component: () => import('@/components/file-upload/index')
-    },
-    {
         path: '/data-table',
         name: 'data-table',
         component: () => import('@/views/data-table')
@@ -80,7 +75,19 @@ const routes = [
     {
         path: '/file',
         name: 'file',
-        component: () => import('@/views/file')
+        component: () => import('@/views/file'),
+        children: [
+            {
+                path: 'image',
+                name: 'file-image',
+                component: () => import('@/views/file/image')
+            },
+            {
+                path: 'progress',
+                name: 'file-progress',
+                component: () => import('@/views/file/progress')
+            }
+        ]
     }
 ]
 

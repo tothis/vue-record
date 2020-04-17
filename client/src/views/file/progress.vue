@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        name: 'file',
+        name: 'file-progress',
         data() {
             return {
                 fileName: '',
