@@ -16,7 +16,7 @@
                 <router-link to="/vant-date">vant-date</router-link>
                 <router-link to="/ele-date">ele-date</router-link>
                 <router-link to="/pdfjs">pdfjs</router-link>
-                <router-link to="/file">file</router-link>
+                <router-link to="/file/image">file</router-link>
             </div>
         </div>
         <router-view/>

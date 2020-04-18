@@ -24,6 +24,8 @@
         methods: {
             // 上传文件
             upload() {
+                this.uploadProgress = 0
+
                 const that = this
                 const file = this.$refs.file
                 let data = new FormData()
@@ -45,6 +47,8 @@
             },
             // 下传文件
             download() {
+                this.downloadProgress = 0
+
                 const that = this
                 let xhr = new XMLHttpRequest()
                 xhr.open('get', 'http://localhost:8080/file/download?fileName=' + this.fileName)

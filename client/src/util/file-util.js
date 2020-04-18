@@ -1,4 +1,4 @@
-export const fileDownload = async (blob, fileName) => {
+export const fileDownload = (blob, fileName) => {
     if (window.navigator.msSaveOrOpenBlob) {
         // msSaveOrOpenBlob方法返回bool值
         navigator.msSaveBlob(blob, fileName) // 本地保存
@@ -15,8 +15,6 @@ export const fileDownload = async (blob, fileName) => {
 }
 
 export const urlDownload = async (url, fileName) => {
-    let response = await fetch(url)
-    // 内容转变成blob地址
-    let blob = await response.blob()
-    fileDownload(blob, fileName)
+    // 获取blob
+    fileDownload(await fetch(url).blob(), fileName)
 }
