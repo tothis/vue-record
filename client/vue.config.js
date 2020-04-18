@@ -1,13 +1,13 @@
+// https://cli.vuejs.org/zh/config
 module.exports = {
     outputDir: 'build', // build输出目录 默认dist
-    // assetsDir: 'assets', // 静态资源目录 默认assets
-    // lintOnSave: false, // 是否开启eslint
+    assetsDir: 'static', // 放置生成的静态资源目录 默认为空
     publicPath: './', // 配置打包后端静态文件引用目录 默认'/'
     devServer: {
         open: true, // 是否自动弹出浏览器页面
         host: 'localhost',
         port: '8888',
-        // https: false, // 是否使用https协议
+        // https: true, // 是否使用https协议
         // hotOnly: false, // 是否开启热更新
         proxy: {
             'api': {
