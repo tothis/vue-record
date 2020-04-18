@@ -8,13 +8,11 @@ module.exports = {
         host: 'localhost',
         port: '8888',
         // https: true, // 是否使用https协议
-        // hotOnly: false, // 是否开启热更新
         proxy: {
             'api': {
-                target: 'http://localhost:8080', // API服务器的地址
+                target: 'http://localhost:8080',
                 ws: true, // 代理websocket
-                // 开启代理 在本地会创建一个虚拟服务端 然后发送请求的数据
-                // 并同时接收请求的数据 服务端和服务端进行数据交互不会有跨域问题
+                // 设成true 请求头host会设成target 默认true
                 changeOrigin: true,
                 pathRewrite: {
                     // 重写路径 比如`/api`重写为`/file`
