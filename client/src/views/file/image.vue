@@ -9,7 +9,8 @@
         <el-card class="box-card">
             <div slot="header">压缩后图片</div>
             <div :key="index" class="image-show" v-for="(url, index) in imageAfter">
-                <img :src="url" @click="deleteImage(index)">
+                <img :src="url" @click="deleteImage(index)"
+                     v-default-image="require('@/assets/panda.jpg')">
             </div>
         </el-card>
         <el-card class="box-card">
@@ -170,7 +171,7 @@
                 )
                 axios({
                     method: 'post',
-                    url: 'file-upload/image',
+                    url: 'file-upload/upload',
                     data: formData
                 })
                     .then(result => {

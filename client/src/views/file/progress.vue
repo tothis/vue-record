@@ -45,7 +45,7 @@
                     }
                 }
             },
-            // 下传文件
+            // 下载文件
             download() {
                 this.downloadProgress = 0
 

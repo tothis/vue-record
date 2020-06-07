@@ -86,6 +86,11 @@ const routes = [
                 path: 'progress',
                 name: 'file-progress',
                 component: () => import('@/views/file/progress')
+            },
+            {
+                path: 'patch',
+                name: 'patch',
+                component: () => import('@/views/file/patch')
             }
         ]
     }

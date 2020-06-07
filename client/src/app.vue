@@ -6,7 +6,6 @@
                 <router-link to="/about">about</router-link>
                 <router-link to="/header">header</router-link>
                 <router-link to="/user">user</router-link>
-                <router-link to="/file-upload">file-upload</router-link>
                 <router-link to="/data-table">element-table</router-link>
                 <router-link to="/better-scroll-x">better-scroll-x</router-link>
                 <router-link to="/better-scroll-y">better-scroll-y</router-link>
@@ -24,7 +23,6 @@
 </template>
 <script>
     import BScroll from 'better-scroll'
-    // import { urlDownload } from '@/util/file-util'
 
     export default {
         data() {
@@ -33,10 +31,6 @@
             }
         },
         created() {
-            let imgPath = require('@/assets/cool.gif')
-            console.log(imgPath)
-            // urlDownload(imgPath, 'cool.gif')
-
             this.$nextTick(() => {
                 const nav = this.$refs.nav
                 const tags = nav.children

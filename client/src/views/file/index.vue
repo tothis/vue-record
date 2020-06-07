@@ -3,6 +3,7 @@
         <div class="container">
             <router-link to="/file/image">image</router-link>
             <router-link to="/file/progress">progress</router-link>
+            <router-link to="/file/patch">patch</router-link>
         </div>
         <router-view/>
     </div>
