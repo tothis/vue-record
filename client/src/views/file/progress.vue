@@ -1,5 +1,10 @@
 <template>
     <div>
+        <el-radio-group @change="switchMode" v-model="mode">
+            <el-radio :label="0">普通</el-radio>
+            <el-radio :label="1">ftp</el-radio>
+            <el-radio :label="2">sftp</el-radio>
+        </el-radio-group>
         <el-button @click="$refs.file.click()">
             <input @change="upload" ref="file" style="display: none" type="file">上传
         </el-button>
@@ -16,9 +21,13 @@
         name: 'file-progress',
         data() {
             return {
+                // 上传模式
+                mode: 0,
                 fileName: '',
                 uploadProgress: 0,
-                downloadProgress: 0
+                downloadProgress: 0,
+                uploadUrl: 'upload',
+                downloadUrl: 'download'
             }
         },
         methods: {
@@ -35,13 +44,13 @@
                 xhr.upload.addEventListener('progress', e => {
                     that.uploadProgress = Math.round((e.loaded * 100) / e.total)
                 })
-                xhr.open('post', 'http://localhost:8080/file/image')
+                xhr.open('post', `file-upload/${this.uploadUrl}`)
                 xhr.send(data)
                 // 绑定监听 监听服务器是否数据响应给ajax引擎 readyState改变后触发
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4) {
                         // 接收响应数据
-                        that.fileName = JSON.parse(xhr.response).fileName
+                        that.fileName = xhr.response
                     }
                 }
             },
@@ -51,7 +60,7 @@
 
                 const that = this
                 let xhr = new XMLHttpRequest()
-                xhr.open('get', 'http://localhost:8080/file/download?fileName=' + this.fileName)
+                xhr.open('get', `file-upload/${this.downloadUrl}?fileName=` + this.fileName)
                 // 设置请求数据类型 否则文件下载后无法打开
                 // https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/responseType
                 xhr.responseType = 'blob'
@@ -73,7 +82,30 @@
                         window.URL.revokeObjectURL(link.href)
                     }
                 }
+            },
+            switchMode(value) {
+                switch (value) {
+                    case 0:
+                        this.uploadUrl = 'upload'
+                        this.downloadUrl = 'download'
+                        break
+                    case 1:
+                        this.uploadUrl = 'ftp'
+                        this.downloadUrl = 'ftp-download'
+                        break
+                    case 2:
+                        this.uploadUrl = 'sftp'
+                        this.downloadUrl = 'sftp-download'
+                        break
+                    default:
+                        break
+                }
             }
         }
     }
 </script>
+<style lang="stylus" scoped>
+    .el-radio-group
+        display block
+        margin-bottom 30px
+</style>

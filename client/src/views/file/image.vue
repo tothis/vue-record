@@ -177,7 +177,7 @@
                     .then(result => {
                         const urlPre = 'file-upload/'
                         console.log('上传成功', result.data)
-                        this.imageData.push(urlPre + result.data.fileName)
+                        this.imageData.push(urlPre + result.data)
                     })
                     .catch(error => {
                         console.log('上传失败' + error)
