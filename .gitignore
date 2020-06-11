@@ -2,9 +2,9 @@
 # common
 **/build
 **/node_modules
+**/dist
 # weex
 weex/.temp
-weex/dist
 # neon
 electron/rust/native/target
 electron/rust/native/index.node
