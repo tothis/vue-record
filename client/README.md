@@ -1,11 +1,11 @@
 # vue-record
 
-#### 多环境配置文件`.env`
+### 多环境配置文件`.env`
 `.env`定义变量时 前缀为`VUE_APP_` 否则会被忽略
 `--mode prod`指定使用`.env.prod`配置 但NODE_ENV默认为`development` `production` `test`
 当`--mode`的值不是三者之一时 需手动设置NODE_ENV变量 否则NODE_ENV值为默认值(默认值为development)
 使用cross-env设置变量`cross-env NODE_ENV=development`
-#### 依赖`.env`使用js文件
+### 依赖`.env`使用js文件
 使用`.env`无法热重载 可使用js根据不同NODE_ENV配置不同数据
 ```js
 let baseUrl = ''
@@ -22,7 +22,17 @@ switch (process.env.NODE_ENV) {
 }
 export default baseUrl
 ```
-
+[vuex](https://vuex.vuejs.org/zh)
+1. state
+存储数据 数据改变时 依赖此数据组件会自动更新
+2. getter
+store数据计算 防止多次计算降低性能
+3. mutation
+同步改变state数据
+4. action
+处理异步程序
+5. module
+多模块store
 ### vue基础
 delete和vue.delete区别
 ```js
