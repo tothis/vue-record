@@ -93,6 +93,11 @@ const routes = [
                 component: () => import('@/views/file/patch')
             }
         ]
+    },
+    {
+        path: '/icon',
+        name: 'icon',
+        component: () => import('@/views/icon')
     }
 ]
 

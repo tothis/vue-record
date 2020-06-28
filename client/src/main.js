@@ -7,6 +7,8 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import { Calendar, Cell, DatetimePicker } from 'vant'
+// svg图标
+import '@/assets/icon/index'
 
 Vue.config.productionTip = false
 
