@@ -22,7 +22,7 @@
             },
             svgClass() {
                 if (this.className) {
-                    return 'svg-icon' + this.className
+                    return 'svg-icon ' + this.className
                 } else {
                     return 'svg-icon'
                 }
@@ -31,9 +31,9 @@
     }
 </script>
 <style lang="stylus" scoped>
-    .icon
+    .svg-icon
         width 1em
-        height em
+        height 1em
         vertical-align -0.15em
         fill currentColor
         overflow hidden

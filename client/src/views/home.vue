@@ -1,24 +1,31 @@
 <template>
     <div class="home">
         <!-- <img alt="图片" src="@/assets/cool.gif"> -->
-        <item msg="learn vue"/>
+
+        <el-divider>组件示例</el-divider>
+
+        <item message="父数据" @event="event" ref="item"/>
+        <el-button @click="item">父调子</el-button>
+
+        <br>
+
         {{ message }}
 
-        <el-divider>分割线</el-divider>
+        <el-divider>vuex示例</el-divider>
 
         <el-button disabled>state {{ $store.state.count }}</el-button>
         <el-button disabled>getter {{ $store.getters.count }}</el-button>
         <el-button @click="$store.commit('increment')">mutation</el-button>
         <el-button @click="$store.dispatch('increment')">action</el-button>
 
-        <el-divider>分割线</el-divider>
+        <br>
 
         <el-button @click="$store.commit('a/set')">module a mutation</el-button>
         <el-button @click="$store.commit('b/set')">module b mutation</el-button>
         <el-button disabled>module a state {{ $store.state.a.name }}</el-button>
         <el-button disabled>module b state {{ $store.state.b.name }}</el-button>
 
-        <el-divider>分割线</el-divider>
+        <br>
 
         <el-button disabled>mapState {{ count1 }}</el-button>
         <el-button disabled>mapState {{ count2 }}</el-button>
@@ -48,7 +55,7 @@
                 count2: e => e.count // 第二种写法
             }),
             ...mapGetters({
-                countGet: 'count',
+                countGet: 'count'
             })
         },
         // computed: mapState([
@@ -60,7 +67,14 @@
             }),
             ...mapMutations({
                 incrementMutation: 'increment'
-            })
+            }),
+            event(e) {
+                console.log('子组件数据 => ', e)
+            },
+            item() {
+                console.log('父组件调用子组件emitEvent函数')
+                this.$refs.item.emitEvent2('父组件数据')
+            }
         }
     }
 </script>

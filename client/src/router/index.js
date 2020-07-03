@@ -15,6 +15,8 @@ const routes = [
         // 必须以'/'开始
         path: '/about',
         name: 'about',
+        // 路由懒加载
+        // https://router.vuejs.org/zh/guide/advanced/lazy-loading.html
         component: () => import('@/views/about')
     },
     {

@@ -33,7 +33,9 @@ module.exports = {
                 }
             }
         }
-    }, chainWebpack: config => {
+    }
+    // https://cli.vuejs.org/zh/guide/webpack.html
+    , chainWebpack: config => {
         // 让其他svg loader不对src/assets/icon进行操作
         config.module
             .rule('svg')
@@ -41,7 +43,7 @@ module.exports = {
             .end()
         // 使用svg-sprite-loader对src/assets/icon下的svg进行操作
         config.module
-            .rule('icons')
+            .rule('icon')
             .test(/\.svg$/)
             .include.add(resolve('src/assets/icon'))
             .end()
@@ -51,5 +53,6 @@ module.exports = {
             .options({
                 symbolId: 'icon-[name]'
             })
+            .end()
     }
 }
