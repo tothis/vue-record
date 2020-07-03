@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import { Calendar, Cell, DatetimePicker } from 'vant'
 // svg图标
 import '@/assets/icon/index'
+// 全局样式
+import '@/assets/css/global/index.styl'
 
 Vue.config.productionTip = false
 

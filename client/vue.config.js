@@ -56,3 +56,15 @@ module.exports = {
             .end()
     }
 }
+
+// svg转字体
+require('svgtofont')({
+    src: path.resolve(process.cwd(), 'src/assets/icon'), // svg文件目录
+    dist: path.resolve(process.cwd(), 'src/assets/font'), // 生成文件目录
+    fontName: 'font', // 生成文件名称
+    css: true // 生成字体文件
+}).then(() => {
+    console.log('生成字体成功')
+}).catch(() => {
+    console.log('生成字体失败')
+})

@@ -6,6 +6,9 @@
         </svg>
         <p>组件写法</p>
         <svg-icon icon-class="树"/>
+        <p>font</p>
+        <p><i class="font-eye"/></p>
+        <p><i class="font-树"/></p>
     </div>
 </template>
 <script>

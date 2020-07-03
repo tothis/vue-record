@@ -9,3 +9,5 @@ weex/.temp
 electron/rust/native/target
 electron/rust/native/index.node
 electron/rust/native/artifacts.json
+
+client/src/assets/font
