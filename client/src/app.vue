@@ -17,6 +17,7 @@
                 <router-link to="/pdfjs">pdfjs</router-link>
                 <router-link to="/file/image">file</router-link>
                 <router-link to="/icon">icon</router-link>
+                <router-link to="/el-table-form">el-table-form</router-link>
             </div>
         </div>
         <router-view/>

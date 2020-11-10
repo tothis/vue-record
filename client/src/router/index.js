@@ -100,6 +100,11 @@ const routes = [
         path: '/icon',
         name: 'icon',
         component: () => import('@/views/icon')
+    },
+    {
+        path: '/el-table-form',
+        name: 'el-table-form',
+        component: () => import('@/views/el-table-form')
     }
 ]
 
